@@ -1,5 +1,4 @@
-/* eslint-disable react/destructuring-assignment */
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 class ClassInput extends Component {
   constructor(props) {
@@ -32,11 +31,9 @@ class ClassInput extends Component {
   render() {
     return (
       <section>
-        {/* eslint-disable-next-line react/prop-types */}
         <h3>{this.props.name}</h3>
         {/* The input field to enter To-Do's */}
         <form onSubmit={this.handleSubmit}>
-          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
           <label htmlFor="task-entry">Enter a task: </label>
           <input
             type="text"

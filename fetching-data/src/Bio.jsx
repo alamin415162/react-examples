@@ -7,12 +7,10 @@ const Bio = ({ delay }) => {
     setTimeout(() => {
       fetch('https://jsonplaceholder.typicode.com/photos', { mode: 'cors' })
         .then((response) => response.json())
-        .then((response) =>
-          setBioText('I like long walks on the beach and JavaScript'),
-        )
+        .then(() => setBioText('I like long walks on the beach and JavaScript'))
         .catch((error) => console.error(error));
     }, delay);
-  }, []);
+  }, [delay]);
 
   return (
     bioText && (
