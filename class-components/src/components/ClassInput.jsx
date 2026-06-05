@@ -11,6 +11,7 @@ class ClassInput extends Component {
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDeletion = this.handleDeletion.bind(this);
   }
 
   handleInputChange(e) {
@@ -27,6 +28,25 @@ class ClassInput extends Component {
       inputVal: '',
     }));
   }
+
+  handleDeletion(event){
+    event.preventDefault()
+    if(event.target.className === 'delete'){
+      this.setState((state) => ({
+        todos: state.todos.filter((todo) => todo !== event.target.value)
+      }));
+    }
+    if(event.target.className === 'edit'){
+      console.log("edit found")
+      let toBeEdited = this.state.todos.filter((todo) => todo === event.target.value )
+      console.log(toBeEdited)
+    }
+
+
+
+  }
+
+
 
   render() {
     return (
@@ -45,10 +65,11 @@ class ClassInput extends Component {
         </form>
         <h4>All the tasks!</h4>
         {/* The list of all the To-Do's, displayed */}
-        <ul>
+        <ul onClick={this.handleDeletion}>
           {this.state.todos.map((todo) => (
-            <li key={todo}>{todo}</li>
+            <li key={todo}>{todo}<button value={todo} className='delete'>Delete</button><button className='edit' value={todo}>Edit</button></li>
           ))}
+          <span>Number todos: {this.state.todos.length}</span>
         </ul>
       </section>
     );
